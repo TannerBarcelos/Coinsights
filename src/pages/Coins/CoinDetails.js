@@ -20,21 +20,27 @@ import TrendingList from '../../components/Trending/TrendingList'
 import { coinFetcher } from '../../common/utils/axios'
 
 const CoinDetails = () => {
+
+  const { logOut, currentUser } = useAuth()
+
   const watchListFromLocalStorage = JSON.parse(
     localStorage.getItem( 'watchList' ),
   )
+
+  if ( !watchListFromLocalStorage ) {
+    localStorage.setItem( 'watchList', JSON.stringify( { user: currentUser, coins: [] } ) )
+  }
+
   const [coins, setCoins] = useState( [] )
   const [watchList, setWatchList] = useState(
-    watchListFromLocalStorage ? watchListFromLocalStorage : [],
+    watchListFromLocalStorage,
   )
   const [paginatedValue, setPaginatedValue] = useState( 1 ) // allow pagination
   const [isLoading, setIsLoading] = useState( false )
   const [cryptoName, setCryptoName] = useState( {} )
 
-  const { logOut, currentUser } = useAuth()
 
   const history = useHistory()
-
   const handleInputChange = ( event ) => {
     const { name, value } = event.target
     setCryptoName( { ...cryptoName, [name]: value.replace( ' ', '-' ) } )
