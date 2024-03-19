@@ -179,7 +179,7 @@ const CoinDetails = () => {
                       <span>{formatPricing( coin.market_cap )}</span>
                     </td>
                     <td>
-                      {watchList.coins.length > 0 && watchList.coins.some( ( el ) => el.id === coin.id ) ? <BsBookmark
+                      {watchList && watchList.coins.length > 0 && watchList.coins.some( ( el ) => el.id === coin.id ) ? <BsBookmark
                         className='cta-watch'
                         title='Item already in watchlist. Click to remove'
                         onClick={() =>
