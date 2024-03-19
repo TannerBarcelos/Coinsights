@@ -28,7 +28,7 @@ const CoinDetails = () => {
   )
 
   if ( !watchListFromLocalStorage ) {
-    localStorage.setItem( 'watchList', JSON.stringify( { user: currentUser, coins: [] } ) )
+    localStorage.setItem( 'watchList', JSON.stringify( { user: currentUser.uid, coins: [] } ) )
   }
 
   const [coins, setCoins] = useState( [] )
