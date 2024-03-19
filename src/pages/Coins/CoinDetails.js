@@ -106,7 +106,7 @@ const CoinDetails = () => {
   return (
     <div>
       <Container className='coins_container'>
-        {watchList && watchList.coins.length > 1 && <Watchlist watchList={watchList} setWatchList={setWatchList} />}
+        {watchList && <Watchlist watchList={watchList} setWatchList={setWatchList} />}
         <TrendingList trendingList={trendingCoins} />
         {isLoading && <LoadingSpinner />}
         <h1>All Coins</h1>
